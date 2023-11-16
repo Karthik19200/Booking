@@ -1,0 +1,35 @@
+
+
+<form  [formGroup]="headers">
+<div class="example-form-fields">
+<mat-form-field >
+    <mat-label>Customer name / C code</mat-label>
+    <input matInput placeholder="" formControlName="customerName" >
+</mat-form-field>
+
+<mat-form-field>
+        <mat-select required  formControlName="companyName">
+          <mat-option>hi</mat-option>
+          <mat-option value="option">Option</mat-option>
+        </mat-select>
+        <mat-label>Company</mat-label>
+</mat-form-field>
+
+<mat-form-field >
+    <mat-label>Customer Reference/ Order</mat-label>
+    <input matInput placeholder="" formControlName="customerReference">
+</mat-form-field>
+
+<mat-form-field >
+    <mat-label>Reciver Reference</mat-label>
+    <input matInput placeholder="" formControlName="reciverReference" >
+</mat-form-field>
+
+<mat-form-field>
+    <mat-label>Freight Read by</mat-label>
+    <input matInput placeholder="" formControlName="freightReadBy" >
+</mat-form-field>
+    
+</div>
+</form>
+

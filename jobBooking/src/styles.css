@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* .mat-input-element {
+    color: white;
+}
+.mat-form-field .mat-input-element {
+    color: white;
+} */
+/* Target the input element and set color to white using !important */
+.mat-form-field .mat-input-element, .mat-form-field .mat-form-field-label-wrapper {
+    color: white !important;
+}
+

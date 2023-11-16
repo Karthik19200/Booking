@@ -1,0 +1,10 @@
+.Row{
+  margin-left: 2%;  
+  margin-top: 8%;
+}
+/* Target the input directly */
+
+input.mat-input-element {
+    color: white !important;
+}
+

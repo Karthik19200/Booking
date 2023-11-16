@@ -1,0 +1,17 @@
+.Row{
+    margin-left: 2%;  
+    margin-top: 8%;
+  }
+  ::ng-deep .mat-form-field  {
+    background-color: white; /* Change the input field background color */
+    color: black; /* Change the input text color */
+    /* Add any other desired styles */
+  }
+
+  .mat-form-field {
+    background-color: white; /* Change background color to white */
+    width: 100%; /* Adjust width as needed */
+  }
+  .mat-form-field .mat-input-element, .mat-form-field .mat-form-field-label-wrapper {
+    color: white !important;
+}

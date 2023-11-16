@@ -1,0 +1,14 @@
+
+  
+  
+  /* Optionally, remove outline/border on focus */
+
+  
+  .example-form-fields mat-form-field {
+    
+    background-color: white;
+    width:20%;
+  }
+  .example-form-fields mat-label {
+    font-size: 15px;
+  }

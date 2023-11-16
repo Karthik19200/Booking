@@ -1,0 +1,70 @@
+<div class="container"  [formGroup]="product">
+
+
+<table>
+    <thead>
+      <tr style="background-color:rgb(26, 0, 175);color:white;height:5vh;font-size: 20px;">
+        <th>Package * </th>
+        <!-- <th>Units *</th> -->
+        <!-- <th>Weight (kg)</th> -->
+        <th>Cubic (n3)*</th>
+        <th>Dimensions(cm) per unit</th>
+        <th>Package Type *</th>
+        
+        <th>Remarks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Sample data rows -->
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Package</mat-label>
+            <input matInput placeholder="" formControlName="package">
+            </mat-form-field>
+        </td>
+        <!-- <td></td> -->
+        
+        <td>
+            <mat-form-field >
+                <mat-label>Length</mat-label>
+                <input matInput placeholder="" formControlName="cubic">
+              </mat-form-field>
+        </td>
+        <td >
+              <mat-form-field >
+                <mat-label>Length</mat-label>
+                <input matInput placeholder="" formControlName="length">
+              </mat-form-field>
+              
+              <mat-form-field >
+                <mat-label>Width</mat-label>
+                <input matInput placeholder="" formControlName="width">
+              </mat-form-field>
+
+              <mat-form-field >
+                <mat-label>Height</mat-label>
+                <input matInput placeholder="" formControlName="height" >
+              </mat-form-field>
+        </td>
+        <td>
+            <mat-form-field>
+            <mat-select required  formControlName="packageType">
+              <mat-option>hi</mat-option>
+              <mat-option value="option">Option</mat-option>
+            </mat-select>
+            <mat-label></mat-label>
+          </mat-form-field>
+        </td>
+
+        <td>
+            <mat-form-field class="example-full-width">
+            <mat-label>Remarks</mat-label>
+            <input matInput placeholder="" formControlName="remarks" >
+            </mat-form-field>
+        </td>
+      </tr>
+      <!-- Add more rows as needed -->  
+    </tbody>
+  </table>
+</div>
