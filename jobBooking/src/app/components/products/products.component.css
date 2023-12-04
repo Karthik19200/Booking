@@ -3,4 +3,6 @@ table {
     
   }
   
- 
+  mat-form-field{
+    width:12vw;
+  }

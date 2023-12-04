@@ -2,23 +2,41 @@
 
 <form  [formGroup]="headers">
 <div class="example-form-fields">
-<mat-form-field >
-    <mat-label>Customer name / C code</mat-label>
-    <input matInput placeholder="" formControlName="customerName" >
-</mat-form-field>
 
 <mat-form-field>
-        <mat-select required  formControlName="companyName">
-          <mat-option>hi</mat-option>
-          <mat-option value="option">Option</mat-option>
+        
+        <mat-select required  formControlName="customerName" (selectionChange)="onCompany1SelectionChange()">
+          <mat-option *ngFor="let customer of customer"[value]="customer.id">{{customer.companyName}}</mat-option>
+        </mat-select>
+        <mat-label>Customer name / Customer code</mat-label>
+        
+</mat-form-field>
+
+
+
+<mat-form-field>
+        <mat-select required  formControlName="companyName" (selectionChange)="onCompanyChange()">
+        <mat-option *ngFor="let company of company" [value]="company.id">{{company.companyName}}</mat-option>
         </mat-select>
         <mat-label>Company</mat-label>
 </mat-form-field>
 
-<mat-form-field >
+<!-- <mat-form-field >
     <mat-label>Customer Reference/ Order</mat-label>
-    <input matInput placeholder="" formControlName="customerReference">
+    <input matInput placeholder=""  formControlName="customerReference"   (input)="onCustomerReferenceChange($event)">
+</mat-form-field> -->
+
+
+<mat-form-field class="mr-3">
+    <input matInput formControlName="customerReference"  [matAutocomplete]="auto"/>
+     <mat-autocomplete (optionSelected)="onOptionSelected()" #auto="matAutocomplete">
+      <mat-option *ngFor="let Order of filteredOrder" [value]="Order.orderNumber" >
+        {{Order.orderNumber}}
+      </mat-option>
+    </mat-autocomplete>
+    <mat-label>Customer Reference/ Order</mat-label>
 </mat-form-field>
+
 
 <mat-form-field >
     <mat-label>Reciver Reference</mat-label>
@@ -27,9 +45,9 @@
 
 <mat-form-field>
     <mat-label>Freight Read by</mat-label>
-    <input matInput placeholder="" formControlName="freightReadBy" >
+    <input matInput placeholder="" type="date" (click)="picker.open()" formControlName="freightReadBy" >
 </mat-form-field>
-    
+   
 </div>
 </form>
 

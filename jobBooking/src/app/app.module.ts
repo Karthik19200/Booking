@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,19 @@ import {MatTableModule} from '@angular/material/table';
 import {FormBuilder, FormControl,  ReactiveFormsModule} from '@angular/forms';
 import {FloatLabelType} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { HttpClientModule } from '@angular/common/http';
+import { JobsListComponent } from './components/jobs-list/jobs-list.component';
+
+
+// import { NgSelectModule } from '@ng-select/ng-select';
+
+
+
+
 // import {MatSnackBar} from '@angular/material/snack-bar';
 
 
@@ -34,7 +48,8 @@ import {MatCardModule} from '@angular/material/card';
     HeaderComponent,
     SenderComponent,
     ReciverComponent,
-    ProductsComponent
+    ProductsComponent,
+    JobsListComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +65,16 @@ import {MatCardModule} from '@angular/material/card';
     MatCheckboxModule,
     MatTableModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatAutocompleteModule,
+    NgbModule,
+    MatDatepickerModule,
+    MatSnackBarModule,
+    HttpClientModule
+  
+    // NgSelectModule
     // MatSnackBar
     
 

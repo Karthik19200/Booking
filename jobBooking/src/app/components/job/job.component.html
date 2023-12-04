@@ -1,30 +1,34 @@
-<p>
-    <mat-toolbar color="primary">
-      <span>Navare</span>   
+<p class="navbar">
+    <mat-toolbar style="background-color:rgb(41, 160, 162);color:white">
+      <span routerLink="jobsList">Jobs</span> 
+     
     </mat-toolbar> 
 </p>
    <br> 
+   <span (click)="showForms()">Show form</span>
 
-   <div class="header">
-     <app-header *ngIf="jobBookingForm && headers"  [headers]="headers"></app-header>
+   <div class="header" *ngIf="headers">
+     <app-header [headers]="headers" (arrrayFilteredChanged)="receiveFilteredArray($event)"  (companyvalueToParent)="recivedCompanyArray($event)"  (reciverCustomer)="recievedCustomerReferencef($event)" (orderArrayToProduct)="recievedOrderArray($event)" (productListToPcomponent)="recivedProductListArray($event)" ></app-header>
    </div>
    
 
 <br><br>
 <div class="containerr">
-    <div class="senderDiv">
-      sender
-        <app-sender [sender]="sender"></app-sender>
+    <div class="senderDiv" *ngIf="sender">
+    
+        <app-sender [sender]="sender" [receivedArray]="receivedFilteredArray" (productListMatchedToPcomponent)="recievedMatchedData($event)"></app-sender>
     </div>
-    <div class="reciverDiv">
-      reciver
-         <app-reciver [reciver]="reciver"></app-reciver>
+    <div class="reciverDiv" *ngIf="reciver">  
+         <app-reciver [reciver]="reciver" [reciverDetails]="recievedCustomerReference" [reciverMatchedData]="recievedMatchedDatafromsender"
+         [isReceiverFormDisabled] = "sender.value.senderAddressId===null"></app-reciver>
     </div>
 </div>
+{{sender.value.senderAddressId}}
 <br><br>
-<div class="productHeader">
-  <app-products [product]="product"></app-products>
+<div class="productHeader" *ngIf="jobBookingForm">
+  <app-products [jobBookingForm]="jobBookingForm" [receivedArray]="receivedFilteredArray" [recivedCompanyId]="recivedCompanyNameFiltered" [productListId]="productListArray" [isProductFormDisabled]="reciver.value.reciverAddressId===null" [product]="product" ></app-products>
 </div>
+
 <br>
 <div class="right-align">
     <button mat-raised-button color="primary" (click)="save()">Save</button>

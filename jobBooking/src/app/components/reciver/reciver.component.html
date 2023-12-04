@@ -1,23 +1,28 @@
 
 <form [formGroup]="reciver">
     <div class="Row">
-        <mat-form-field class="example-full-width">
-            <mat-label>Country</mat-label>
-            <input matInput placeholder=""  formControlName="country">
-          </mat-form-field>
 
-          <mat-form-field>
-            <mat-select required  formControlName="company">
-              <mat-option>hi</mat-option>
-              <mat-option value="option">Option</mat-option>
-            </mat-select>
-            <mat-label>Company</mat-label>
-          </mat-form-field>
+      <mat-form-field>
+        <mat-select required  formControlName="country">
+          <mat-option *ngFor="let country of countries" [value]="country.countryName">{{country.countryName}}</mat-option>
+        </mat-select>
+        <mat-label>Country</mat-label>
+      </mat-form-field> 
 
-          <mat-form-field class="example-full-width">
+      <mat-form-field>
+        <input matInput formControlName="Name" [matAutocomplete]="auto"/>
+         <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let name of filteredNames" [value]="name.id">
+            {{ name.name }}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-label>Name</mat-label>
+      </mat-form-field>
+
+      <!-- <mat-form-field class="example-full-width">
          <mat-label>Find Address</mat-label>
          <input matInput placeholder=""  formControlName="findAddress">
-      </mat-form-field>
+      </mat-form-field> -->
 
       <mat-form-field class="example-full-width">
         <mat-label>Building</mat-label>

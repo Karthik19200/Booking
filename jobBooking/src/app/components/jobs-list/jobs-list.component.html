@@ -1,0 +1,31 @@
+
+<div class="container">
+<table>
+    <thead >
+      <tr style="background-color:rgb(10, 10, 10);color:white;height:5vh;font-size: 18px;margin-left: 10%;">
+        <th style="width:15vw"><mat-checkbox class="example-margin"></mat-checkbox></th>    
+        <th style="width:15vw">Job No</th>
+        <th style="width:15vw">Senedr</th>
+        <th style="width:15vw">Reciver</th>
+        <th style="width:15vw">Product</th>
+        <th style="width:15vw">Actions</th>
+     
+      </tr>
+</thead>
+    
+<tbody >
+    <tr *ngFor="let job of allJobs,let i = index" > 
+        <td><mat-checkbox class="example-margin"></mat-checkbox></td>
+        <td><h2>{{job._id}}</h2></td>
+        <td><h2>{{job.sender.Name}}</h2></td>
+        <td><h2>{{job.reciver.Name}}</h2></td>
+        <td><h2>{{job.product.length}}</h2></td>
+        <td style="margin-left:5%"><i class="fas fa-trash-alt"></i><i class="fas fa-edit"></i></td>
+     
+        
+    </tr>
+</tbody>
+</table>
+</div>
+
+

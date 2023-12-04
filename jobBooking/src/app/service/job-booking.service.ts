@@ -5,15 +5,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   providedIn: 'root'
 })
 export class JobBookingService {
+  createProductFormGroup() {
+    throw new Error('Method not implemented.');
+  }
 
   senderForm!: FormGroup;
   jobBookingForm!: FormGroup;
   receiverForm!:FormGroup;
   headerForm!:FormGroup;
   productForm!:FormGroup;
-  
+
+
+
   constructor(private form: FormBuilder) {
-    
+   
+
   }
 
   getJobBookingForm(): FormGroup {
@@ -22,7 +28,7 @@ export class JobBookingService {
       header:this.header(),
       sender:this.sender(),
       reciver:this.reciver(),
-      product:this.form.array([this.product()])
+      product:this.form.array([this.productsF()])
     });
 
   }
@@ -31,27 +37,30 @@ export class JobBookingService {
 
 private header():FormGroup{
   return this.form.group({
-    customerName: [null, [Validators.required, Validators.pattern('[a-zA-Z\\s]*')]],
-    companyName: [null, [Validators.required, Validators.pattern('[a-zA-Z\\s]*')]],
-    customerReference: [null, [Validators.required, Validators.pattern(/^\d{10}$/)]],
-    reciverReference: [null, [Validators.required, Validators.pattern(/^\d{10}$/)]],
-    freightReadBy: [null,[Validators.required, Validators.pattern('[a-zA-Z\\s]*')]], 
+    customerName: [null, [Validators.required, Validators.pattern('[a-zA-Z\\s()]*'),],],
+    companyName: [null],
+    // customerName: [null, [Validators.required, Validators.pattern('[a-zA-Z\\s()]*'),],],
+    // companyName: [null, [Validators.required, Validators.pattern('[a-zA-Z\\s]*')]],
+    customerReference: [null,[Validators.required]],
+    reciverReference: [null],
+    freightReadBy: [null], 
   })
 }
 
   private sender(): FormGroup {
     return this.form.group({
-      country: ['',],
-      companyName: [null,],
-      findAddress: [null ],
-      building: ['', Validators.required],
-      streetNo:[null, [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      senderAddressId: [null,[Validators.required]],
+      country: [null],
+      Name: [null,[Validators.required]],
+      // findAddress: [null ],
+      building: [null],
+      streetNo:[null],
       street:[null],
-      subRub:['', Validators.required],
-      city:[null, [Validators.required, Validators.pattern('[a-zA-Z\\s]*')]],
-      state:[null, [Validators.required, Validators.pattern('[a-zA-Z\\s]*')]],
+      subRub:[null],
+      city:[null],
+      state:[null],
       postCode:[null, [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      contactPerson:[null,[Validators.required, Validators.pattern('[a-zA-Z\\s]*')]],
+      contactPerson:[null],
       mobile:[null, [Validators.required, Validators.pattern(/^\d{10}$/)]],
       phone:[null, [Validators.required, Validators.pattern(/^\d{10}$/)]],
       email: [null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/),],],
@@ -62,17 +71,19 @@ private header():FormGroup{
 
   private reciver(): FormGroup {
     return this.form.group({
-      country: ['',[Validators.required, Validators.pattern('[a-zA-Z\\s]*')]],
-      companyName: [null, [Validators.required, Validators.pattern('[a-zA-Z\\s]*')]],
-      findAddress: ['', Validators.required],
-      building: ['', Validators.required],
-      streetNo:[null, [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      subRub:['', Validators.required],
-      city:[null, [Validators.required, Validators.pattern('[a-zA-Z\\s]*')]],
-      state:[null, [Validators.required, Validators.pattern('[a-zA-Z\\s]*')]],
+      reciverAddressId: [null,[Validators.required]],
+      country: [''],
+      Name: [null],
+      // findAddress: [null],
+      building: [null],
+      streetNo:[null],
+      street:[null],
+      subRub:[null],
+      city:[null],
+      state:[null],
       postCode:[null, [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      contactPerson:[null,[Validators.required, Validators.pattern('[a-zA-Z\\s]*')]],
-      mobile:[null, [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      contactPerson:[null],
+      mobile:[null,[Validators.required, Validators.pattern(/^\d{10}$/)]],
       phone:[null, [Validators.required, Validators.pattern(/^\d{10}$/)]],
       email: [null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/),],],
       pickupInstruction:[null],
@@ -80,9 +91,11 @@ private header():FormGroup{
     });
   }
 
-  private product():FormGroup {
+  public productsF():FormGroup {
     return this.form.group({
       package:[null],
+      units:[null],
+      weight:[null],
       cubic:[null],
       length:[null],
       width:[null],
@@ -91,5 +104,8 @@ private header():FormGroup{
       remarks:[null]
     })
   }
+
+
+  
 
 }

@@ -1,0 +1,18 @@
+.container{
+    width:90%;
+    height:80%;
+    margin-left: 4%;
+    margin-top:2%;
+    background-color: whitesmoke;
+  
+}
+#myCheckbox{
+    width:80%;
+}
+td {
+    text-align: center; /* Align text content horizontally at the center */
+    vertical-align: middle; /* Align content vertically at the middle */
+}
+/* .example-margin{
+background-color: white;
+} */

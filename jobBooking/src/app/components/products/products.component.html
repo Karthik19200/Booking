@@ -1,70 +1,90 @@
-<div class="container"  [formGroup]="product">
-
-
-<table>
+<div class="container" [formGroup]="jobBookingForm">
+  <div class="formArrayname" formArrayName="product">
+ <table>
     <thead>
-      <tr style="background-color:rgb(26, 0, 175);color:white;height:5vh;font-size: 20px;">
-        <th>Package * </th>
-        <!-- <th>Units *</th> -->
-        <!-- <th>Weight (kg)</th> -->
-        <th>Cubic (n3)*</th>
-        <th>Dimensions(cm) per unit</th>
-        <th>Package Type *</th>
-        
+      <tr style="background-color:rgb(1, 148, 150);color:white;height:5vh;font-size: 20px;">
+        <th style="width:1vw">Package *</th> 
+        <th style="width:12vw">units</th>
+        <th style="width:12vw">Weight</th>
+        <th style="width:12vw">Cubic (n3)*</th>
+        <th style="width:15vw">Dimensions(cm) per unit</th>
+        <th style="width:12vw">Package Type *</th>    
         <th>Remarks</th>
+        <th> <button (click)="addProducts()" style="border:none;background-color:rgb(1, 148, 150);color:white;font-size: 30px;">+</button> </th>
       </tr>
     </thead>
     <tbody>
       <!-- Sample data rows -->
-      <tr>
-        <td>
-          <mat-form-field class="example-full-width">
-            <mat-label>Package</mat-label>
-            <input matInput placeholder="" formControlName="package">
-            </mat-form-field>
-        </td>
-        <!-- <td></td> -->
+      <tr *ngFor="let itemControl of this.jobBookingForm.get('product')?.controls; let i = index" [formGroupName]="i">
         
-        <td>
+    <td>      
+        <mat-form-field>
+             <mat-label>Package</mat-label>
+             <mat-select required  formControlName="package" (selectionChange)="onPackageTypeSelectionChange($event.value, i)">
+             <mat-option *ngFor="let package of packageS" [value]="package.Id" >{{package.package}}</mat-option>
+             </mat-select>
+        </mat-form-field>
+    
+      </td>
+      
+      <td>
+         <mat-form-field >
+          <mat-label>units</mat-label>
+          <input matInput   formControlName="units"  (input)="onUnitsChange(i)">
+          </mat-form-field>
+     </td>
+
+      <td>
             <mat-form-field >
+                <mat-label>Weight</mat-label>
+                <input matInput  formControlName="weight" (blur)="onInputBlur(i)">
+            </mat-form-field>
+      </td>
+
+      <td>
+          <mat-form-field >
+              <mat-label>Cubic</mat-label>
+              <input matInput  formControlName="cubic" (input)="calculateDimensions(i)">
+            </mat-form-field>
+      </td>
+
+      <td >
+              <mat-form-field  style="width:5vw">
                 <mat-label>Length</mat-label>
-                <input matInput placeholder="" formControlName="cubic">
-              </mat-form-field>
-        </td>
-        <td >
-              <mat-form-field >
-                <mat-label>Length</mat-label>
-                <input matInput placeholder="" formControlName="length">
+                <input matInput  formControlName="length">
               </mat-form-field>
               
-              <mat-form-field >
+              <mat-form-field  style="width:5vw">
                 <mat-label>Width</mat-label>
-                <input matInput placeholder="" formControlName="width">
+                <input matInput  formControlName="width">
               </mat-form-field>
 
-              <mat-form-field >
+              <mat-form-field  style="width:5vw">
                 <mat-label>Height</mat-label>
-                <input matInput placeholder="" formControlName="height" >
+                <input matInput  formControlName="height">
               </mat-form-field>
-        </td>
+      </td>
+
         <td>
             <mat-form-field>
-            <mat-select required  formControlName="packageType">
-              <mat-option>hi</mat-option>
-              <mat-option value="option">Option</mat-option>
+            <mat-select required  formControlName="packageType"   >
+            <mat-option *ngFor="let package of packageTypee" [value]="package.packageType" >{{package.packageType}}</mat-option>
             </mat-select>
             <mat-label></mat-label>
-          </mat-form-field>
+            </mat-form-field>
         </td>
 
         <td>
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="example-full-width" style="width:19vw">
             <mat-label>Remarks</mat-label>
-            <input matInput placeholder="" formControlName="remarks" >
+            <input matInput  formControlName="remarks" >
             </mat-form-field>
         </td>
+
+        <td style="width:2vw"><button (click)="deleteProduct(i)" style="border:none"><i class="fa fa-trash" style="font-size: 25px;" aria-hidden="true"></i></button></td>
+      
       </tr>
-      <!-- Add more rows as needed -->  
     </tbody>
   </table>
+</div>
 </div>
